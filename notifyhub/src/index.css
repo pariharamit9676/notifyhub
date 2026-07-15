@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Override indigo palette with #0078d4 (Microsoft Blue) */
+  --color-indigo-50:  #e5f1fb;
+  --color-indigo-100: #cce3f7;
+  --color-indigo-200: #99c7ef;
+  --color-indigo-300: #66aae7;
+  --color-indigo-400: #338edf;
+  --color-indigo-500: #0071c8;
+  --color-indigo-600: #0078d4;   /* PRIMARY */
+  --color-indigo-700: #0068b8;
+  --color-indigo-800: #005799;
+  --color-indigo-900: #00467a;
+  --color-indigo-950: #003561;
+
+  /* Shadow color for primary buttons */
+  --color-primary: #0078d4;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400;
+  }
+}
+
+@layer utilities {
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm;
+  }
+  .card-header {
+    @apply px-6 py-4 border-b border-slate-100 flex items-center justify-between;
+  }
+  .input {
+    @apply w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm text-slate-800 
+           bg-white placeholder-slate-400 outline-none transition-all
+           focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400;
+  }
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold 
+           py-2.5 px-5 rounded-xl transition-all duration-150 flex items-center justify-center
+           disabled:opacity-50 disabled:cursor-not-allowed shadow-sm shadow-indigo-200;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-slate-50 text-slate-700 font-medium border border-slate-200 
+           py-2.5 px-5 rounded-xl transition-all duration-150 flex items-center justify-center;
+  }
+  .badge-green {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100;
+  }
+  .badge-red {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-100;
+  }
+  .badge-yellow {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-100;
+  }
+  .badge-blue {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100;
+  }
+  .badge-gray {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200;
+  }
+  .stat-card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm p-6;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150;
+  }
+  .nav-link-active {
+    @apply bg-indigo-600 text-white shadow-sm shadow-indigo-200;
+  }
+  .nav-link-inactive {
+    @apply text-slate-400 hover:text-white hover:bg-white/10;
+  }
+  .section-title {
+    @apply text-base font-semibold text-slate-800;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-700 mb-1.5;
+  }
+}
