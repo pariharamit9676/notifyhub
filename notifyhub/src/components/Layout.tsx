@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useLocation, Outlet } from 'react-router-dom';
+import api from '../api/client';
 
 const ICONS = {
   dashboard: (
@@ -60,11 +61,8 @@ const Layout: React.FC = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const res = await fetch('http://localhost:5001/api/settings/profile', {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        if (res.ok) setUser(await res.json());
+        const res = await api.get('/settings/profile');
+        if (res.data) setUser(res.data);
       } catch { /* ignore */ }
     };
     fetchUser();
