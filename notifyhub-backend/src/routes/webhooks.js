@@ -38,8 +38,7 @@ router.post('/sendgrid', async (req, res) => {
 
         const events = req.body;
         console.log("RECEIVED WEBHOOK:", JSON.stringify(events, null, 2));
-        fs.appendFileSync('webhook-debug.log', JSON.stringify(events, null, 2) + '\n');
-        
+        // Removed fs.appendFileSync to prevent file write errors on cloud hosting
         if (!Array.isArray(events)) {
             return res.status(400).send('Expected an array of events');
         }
