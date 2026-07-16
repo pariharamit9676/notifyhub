@@ -27,6 +27,7 @@ import './queues/pushWorker.js';
 connectDB();
 
 const app = express();
+app.set('trust proxy', 1); // Trust first proxy (required for Render/Heroku rate limiting)
 const httpServer = createServer(app);
 
 // Setup Socket.IO
