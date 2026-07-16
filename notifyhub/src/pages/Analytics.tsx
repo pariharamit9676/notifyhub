@@ -45,15 +45,18 @@ const Analytics: React.FC = () => {
     return new Date(log.createdAt) >= cutoff;
   });
 
+  const successCount = stats.sent + (stats.delivered || 0);
+  const failCount = (stats.failed || 0) + (stats.dropped || 0) + (stats.bounced || 0) + (stats.bounce || 0);
+  
   const successRate = stats.total > 0
-    ? ((stats.sent / stats.total) * 100).toFixed(1)
+    ? ((successCount / stats.total) * 100).toFixed(1)
     : '0.0';
 
   const statsData = [
     { id: 1, title: 'Total Processed', value: stats.total.toString(), icon: '📊', bg: 'bg-blue-50' },
-    { id: 2, title: 'Successfully Sent', value: stats.sent.toString(), icon: '✅', bg: 'bg-emerald-50' },
-    { id: 3, title: 'In Queue', value: stats.queued.toString(), icon: '⏳', bg: 'bg-amber-50' },
-    { id: 4, title: 'Failed', value: stats.failed.toString(), icon: '❌', bg: 'bg-red-50' },
+    { id: 2, title: 'Successfully Sent', value: successCount.toString(), icon: '✅', bg: 'bg-emerald-50' },
+    { id: 3, title: 'In Queue', value: ((stats.queued || 0) + (stats.processing || 0)).toString(), icon: '⏳', bg: 'bg-amber-50' },
+    { id: 4, title: 'Failed / Dropped', value: failCount.toString(), icon: '❌', bg: 'bg-red-50' },
   ];
 
   // Line Chart — notifications per day for selected range
