@@ -1,9 +1,9 @@
 import React from 'react';
 
-type StatusType = 'SENT' | 'DELIVERED' | 'OPENED' | 'CLICKED' | 'FAILED' | 'BOUNCE' | 'DROPPED' | 'QUEUED' | 'PROCESSING';
+export type StatusType = 'SENT' | 'DELIVERED' | 'OPENED' | 'CLICKED' | 'FAILED' | 'BOUNCE' | 'DROPPED' | 'QUEUED' | 'PROCESSING';
 
 interface StatusBadgeProps {
-  status: string;
+  status: StatusType | string;
 }
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
